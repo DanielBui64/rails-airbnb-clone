@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+user1 = User.create!(first_name: "Janaya", last_name: "Jackson", phone_number: "514-123-4567", email: "janaya@jackson.ca", password: "mypassword", date_of_birth: Date.new(2001,2,3), owner: "true" )
+user2 = User.create!(first_name: "Daniel", last_name: "Bui", phone_number: "514-123-4567", email: "daniel@bui.ca", password: "mypassword", date_of_birth: Date.new(2001,2,3), owner: "true")
+user3 = User.create!(first_name: "David", last_name: "Homes", phone_number: "514-123-4567", email: "david@homes.ca", password: "mypassword", date_of_birth: Date.new(2001,2,3), owner: "false")
+user4 = User.create!(first_name: "Rabih", last_name: "Jackson", phone_number: "514-123-4567", email: "rabih@jackson.ca", password: "mypassword", date_of_birth: Date.new(2001,2,3), owner: "false")
+
+boat1 = Boat.create!(name: "LeBoat", make_model_year: "Yacht 2001", location: "Montreal", price_per_day: 1000, description: "Biggest boat in quebec!", capacity: 250, rating: 5, user: user1)
+boat2 = Boat.create!(name: "LeSmallBoat", make_model_year: "Yacht 1960", location: "Montreal", price_per_day: 10, description: "Smallest boat in quebec!", capacity: 2, rating: 3, user: user2)
+
+Booking.create!(date_start: Date.new(2022,2,22), date_end: Date.new(2022,2,25), boat: boat1, user: user3)
+Booking.create!(date_start: Date.new(2022,2,25), date_end: Date.new(2022,2,28), boat: boat1, user: user4)
+Booking.create!(date_start: Date.new(2022,3,22), date_end: Date.new(2022,3,25), boat: boat2, user: user3)
