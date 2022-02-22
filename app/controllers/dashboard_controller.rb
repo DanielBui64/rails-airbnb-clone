@@ -6,5 +6,6 @@ class DashboardController < ApplicationController
   end
 
   def my_boats
+    @boats = Boat.where(user: current_user)
   end
 end
