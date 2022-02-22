@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :boats
 
-  validates :first_name, :last_name, :phone_number, :email, :password, :date_of_birth, :owner, presence: true
+  validates :first_name, :last_name, :phone_number, :email, :password, :date_of_birth, presence: true
 end
