@@ -1,2 +1,27 @@
-<h1>Dashboard#my_boats</h1>
-<p>Find me in app/views/dashboard/my_boats.html.erb</p>
+<div class="container mt-3">
+  <div class="row row-cols-2 mb-3">
+    <div class="col"><h1>My Boats</h1></div>
+    <div class="col text-end"><%= link_to 'Add New Boat', new_boat_path, class:"btn btn-outline-success" %></div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <% @boats.each do |boat| %>
+      <div class="col">
+        <div class="card">
+          <%= link_to boat_path(boat) do %>
+            <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" alt="boat parked">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= boat.name %></h5>
+            <p class="card-text"><%= boat.description %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Price: $<%= boat.price_per_day %>/day</li>
+          </ul>
+          <div class="card-footer text-center">
+            <%= link_to 'Remove', boat_path(boat), method: :delete, data: { confirm: "Remove boat ?" }, class:"btn btn-outline-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
