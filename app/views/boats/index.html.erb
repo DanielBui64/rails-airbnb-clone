@@ -4,7 +4,11 @@
       <div class="col">
         <div class="card mb-3 mt-3" style="max-width: 540px;">
         <%= link_to boat_path(boat) do %>
-          <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" alt="boat parked">
+          <% if boat.name === "The Somino" %>
+            <%= image_tag('image1.png', class:"card-img-top") %>
+          <% else %>
+            <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" alt="boat parked">
+          <% end %>
         <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= boat.name %></h5>

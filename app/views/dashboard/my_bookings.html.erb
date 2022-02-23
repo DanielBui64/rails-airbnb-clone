@@ -11,7 +11,11 @@
           </div>
           <div class="row g-0">
             <div class="col-md-4">
+            <% if booking.boat.name === "The Somino" %>
+              <%= image_tag('image1.png', class:"d-block w-100") %>
+            <% else %>
               <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="img-fluid rounded-start" alt="duck boat">
+            <% end %>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -21,7 +25,7 @@
             </div>
           </div>
           <div class="card-footer text-center">
-            <button type="button" class="btn btn-danger">Cancel Request</button>
+            <%= link_to "Cancel Request", booking_path(booking), method: :delete, data: { confirm: "Cancel request?" }, class:"btn btn-danger"%>
           </div>
         </div>
       </div>
@@ -40,7 +44,11 @@
           </div>
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="img-fluid rounded-start" alt="duck boat">
+              <% if request.boat.name === "The Somino" %>
+                <%= image_tag('image1.png', class:"d-block w-100") %>
+              <% else %>
+                <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="img-fluid rounded-start" alt="duck boat">
+              <% end %>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -50,7 +58,7 @@
           </div>
           <div class="card-footer text-center">
             <button type="button" class="btn btn-success">Accept</button>
-            <button type="button" class="btn btn-danger">Decline</button>
+            <%= link_to "Decline", booking_path(request), method: :delete, data: { confirm: "Cancel request?" }, class:"btn btn-danger"%>
           </div>
         </div>
       </div>
