@@ -1,2 +1,59 @@
-<h1>Dashboard#my_bookings</h1>
-<p>Find me in app/views/dashboard/my_bookings.html.erb</p>
+<div class="container mt-3">
+  <div class="row row-cols-2 mb-3">
+    <div class="col"><h2>My Bookings</h2></div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @bookings.each do |booking| %>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <%= booking.boat.name %>
+          </div>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="img-fluid rounded-start" alt="duck boat">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-title">Request to rent <%= booking.boat.name %> has been sent to <%= booking.boat.user.first_name %></p>
+                <p class="card-text">Request made from <%= booking.date_start %> till <%= booking.date_end %></p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <button type="button" class="btn btn-danger">Cancel Request</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div class="row row-cols-2 mb-3">
+    <div class="col"><h2>My Booking Requests</h2></div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @booking_requests.each do |request| %>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            New request from <%= request.user.first_name %>!
+          </div>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="img-fluid rounded-start" alt="duck boat">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-text"><%= request.user.first_name %> wants to rent <%= request.boat.name %> from <%= request.date_start %> till <%= request.date_end %></p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <button type="button" class="btn btn-success">Accept</button>
+            <button type="button" class="btn btn-danger">Decline</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
