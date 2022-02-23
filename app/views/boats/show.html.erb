@@ -60,33 +60,19 @@
       </ul>
     </div>
     <div class="col-4">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
       <div class="card-body">
           <h5 class="card-title">$<%= @boat.price_per_day %>/day</h5>
           <h6 class="card-subtitle mb-2 text-muted">Provided by <%= @boat.user.first_name %></h6>
 
-          <p class="card-text">Start Date</p>
-          <div class="input-group date" id="datepicker">
-            <input type="text" class="form-control" placeholder="YYYY/MM/DD" id="datePicker"/>
-            <span class="input-group-append">
-              <span class="input-group-text bg-light d-block">
-                <i class="fa fa-calendar"></i>
-              </span>
-            </span>
-          </div>
-          <br>
-          <p class="card-text">End Date</p>
-          <div class="input-group date" id="datepicker">
-            <input type="text" class="form-control" placeholder="YYYY/MM/DD" id="datePicker"/>
-            <span class="input-group-append">
-              <span class="input-group-text bg-light d-block">
-                <i class="fa fa-calendar"></i>
-              </span>
-            </span>
-          </div>
+          <%= simple_form_for([@boat, @booking]) do |f| %>
+            <%= f.input :date_start %>
+            <%= f.input :date_end %>
+            <%= f.submit 'Save' %>
+          <% end %>
           <br>
           <div class="d-grid gap-2 col-12 mx-auto">
-            <button type="button" class="btn btn-success">Book Now</button>
+            <%# <button type="button" class="btn btn-success">Book Now</button> %>
             <button class="btn btn-secondary" type="button">Contact <%= @boat.user.first_name %></button>
           </div>
         </div>

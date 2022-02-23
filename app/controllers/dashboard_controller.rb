@@ -3,6 +3,8 @@ class DashboardController < ApplicationController
   end
 
   def my_bookings
+    @bookings = Booking.where(user: current_user)
+    @booking_requests = Booking.where(boat: current_user.boats)
   end
 
   def my_boats
