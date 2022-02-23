@@ -8,7 +8,13 @@
       <div class="col">
         <div class="card">
           <%= link_to boat_path(boat) do %>
-            <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" alt="boat parked">
+            <% if boat.photo.key %>
+              <div class="card-img-top">
+                <%= cl_image_tag boat.photo.key, width: 400, height:200, crop: :fill, :alt=>"Casual Jacket" %>
+              </div>
+            <% else %>
+              <img class="card-img-top" src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" alt="boat parked">
+            <% end %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= boat.name %></h5>
@@ -24,4 +30,12 @@
       </div>
     <% end %>
   </div>
+
+            <%# if boat.photos %>
+              <%# boat.photos.each do |photo| %>
+                <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :alt=>"Casual Jacket" %>
+              <%# end %>
+            <%# else %>
+              <%# <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" alt="boat parked"> %>
+            <%# end %>
 </div>
