@@ -7,4 +7,7 @@ class Boat < ApplicationRecord
   validates :name, :make_model_year, :location, :price_per_day, :description, :capacity, presence: true
   validates :price_per_day, :capacity, numericality: true
   # validates :type, inclusion: { in: %w[small medium big huge] }
+
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end
