@@ -21,13 +21,13 @@
            <% @boat.photos.each_with_index do |photo, index| %>
             <% if index == 0 %>
                 <div class="carousel-item active">
-                  <% photo_url =cl_image_path(photo.key) %>
-                  <img src="<%= photo_url %>"  class="d-block w-100" alt="A different angle of the same boat">
+                  <% photo_url = cl_image_path(photo.key) %>
+                  <img src="<%= photo_url %>"  class="d-block w-100" style="max-height: 600px; object-fit: cover;" alt="A different angle of the same boat">
                 </div>
             <% else %>
                 <div class="carousel-item">
-                  <% photo_url =cl_image_path(photo.key) %>
-                  <img src="<%= photo_url %>"  class="d-block w-100" alt="A different angle of the same boat">
+                  <% photo_url = cl_image_path(photo.key) %>
+                  <img src="<%= photo_url %>"  class="d-block w-100" style="max-height: 600px; object-fit: cover;" alt="A different angle of the same boat">
                 </div>
             <% end %>
           <% end %>

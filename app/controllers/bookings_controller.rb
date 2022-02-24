@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
     @boat = Boat.find(params[:boat_id])
     @booking.boat = @boat
     if @booking.save
-      redirect_to dashboard_my_bookings_path
+      redirect_to booking_confirm_path(@booking)
     else
       render :show
     end

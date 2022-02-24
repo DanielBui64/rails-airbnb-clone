@@ -11,11 +11,13 @@
           </div>
           <div class="row g-0">
             <div class="col-md-4">
-            <% if booking.boat.name === "The Somino" %>
-              <%= image_tag('image1.png', class:"d-block w-100") %>
-            <% else %>
-              <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="img-fluid rounded-start" alt="duck boat">
-            <% end %>
+              <% if booking.boat.photos.count > 0 %>
+                <% first = booking.boat.photos.first %>
+                <% photo_url = cl_image_path(first.key) %>
+                <img src="<%= photo_url %>" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="A beautiful large boat">
+              <% else %>
+                <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="boat parked">
+              <% end %>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -44,10 +46,12 @@
           </div>
           <div class="row g-0">
             <div class="col-md-4">
-              <% if request.boat.name === "The Somino" %>
-                <%= image_tag('image1.png', class:"d-block w-100") %>
+              <% if request.boat.photos.count > 0 %>
+                <% first = request.boat.photos.first %>
+                <% photo_url = cl_image_path(first.key) %>
+                <img src="<%= photo_url %>" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="A beautiful large boat">
               <% else %>
-                <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="img-fluid rounded-start" alt="duck boat">
+                <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="boat parked">
               <% end %>
             </div>
             <div class="col-md-8">
