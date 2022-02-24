@@ -15,9 +15,14 @@ class BoatsController < ApplicationController
   end
 
   def edit
+    @boat = Boat.find(params[:id])
   end
 
   def update
+    @boat = Boat.find(params[:id])
+    @boat.update(boat_params)
+
+    redirect_to dashboard_my_boats_path
   end
 
   def create
@@ -43,7 +48,6 @@ class BoatsController < ApplicationController
   private
 
   def boat_params
-    params.require(:boat).permit(:name, :make_model_year, :location, :price_per_day, :capacity, :description, :photo)
-    # add <photos: []> for many photos
+    params.require(:boat).permit(:name, :make_model_year, :location, :price_per_day, :capacity, :description, :photos)
   end
 end
