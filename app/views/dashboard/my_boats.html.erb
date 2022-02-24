@@ -23,8 +23,15 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Price: $<%= boat.price_per_day %>/day</li>
           </ul>
-          <div class="card-footer text-center">
-            <%= link_to 'Remove', boat_path(boat), method: :delete, data: { confirm: "Remove boat ?" }, class:"btn btn-outline-danger" %>
+          <div class="card-footer">
+            <div class="row g-3">
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <%= link_to 'Edit', edit_boat_path(boat), class:"btn btn-outline-primary" %>
+              </div>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <%= link_to 'Remove', boat_path(boat), method: :delete, data: { confirm: "Remove boat ?" }, class:"btn btn-outline-danger" %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
