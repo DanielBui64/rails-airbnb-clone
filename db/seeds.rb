@@ -3,9 +3,9 @@ user2 = User.create!(first_name: "Daniel", last_name: "Bui", phone_number: "514-
 user3 = User.create!(first_name: "David", last_name: "Homes", phone_number: "514-123-4567", email: "david@homes.ca", password: "mypassword", date_of_birth: Date.new(2001,2,3), owner: "false")
 user4 = User.create!(first_name: "Rabih", last_name: "Jackson", phone_number: "514-123-4567", email: "rabih@jackson.ca", password: "mypassword", date_of_birth: Date.new(2001,2,3), owner: "false")
 
-boat1 = Boat.create!(name: "LeBoat", make_model_year: "Yacht 2001", location: "5333 Avenue Casgrain, Montréal QC", price_per_day: 1000, description: "Biggest boat in quebec!", capacity: 250, rating: 5, user: user1)
-boat2 = Boat.create!(name: "LeSmallBoat", make_model_year: "Yacht 1960", location: "22 Chemin Macdonald, Montréal, QC H3C 6A3", price_per_day: 10, description: "Smallest boat in quebec!", capacity: 2, rating: 3, user: user3)
-boat3 = Boat.create!(name: "The Somino", make_model_year: "The Somino Super Yacht 2022", location: "777 Boulevard Marcel-Laurin, Montréal, QC H4M 2M7", price_per_day: 100000, description: "The Somino Super Yacht boasts 39 apartments, 4 restaurants, 9 bars, a private pool along with a private Marina, helicopter pad and 170 crew members on board ready at your service.", capacity: 250, rating: 5, user: user1)
+boat1 = Boat.create!(name: "The Somino", make_model_year: "The Somino Super Yacht 2022", location: "290 Lakeshore Rd, Pointe-Claire, Quebec H9S 4L3", price_per_day: 100000, description: "The Somino Super Yacht boasts 39 apartments, 4 restaurants, 9 bars, a private pool along with a private Marina, helicopter pad and 170 crew members on board ready at your service.", capacity: 250, rating: 5, user: user1)
+boat2 = Boat.create!(name: "LeBoat", make_model_year: "Yacht 2001", location: "2801 Boulevard Saint-Joseph, Lachine, QC H8S 4B7", price_per_day: 1000, description: "Biggest boat in quebec!", capacity: 250, rating: 5, user: user1)
+boat3 = Boat.create!(name: "LeSmallBoat", make_model_year: "Yacht 1960", location: "22 Chemin Macdonald, Montréal, QC H3C 6A3", price_per_day: 10, description: "Smallest boat in quebec!", capacity: 2, rating: 3, user: user3)
 
 Booking.create!(date_start: Date.new(2022,2,22), date_end: Date.new(2022,2,25), boat: boat1, user: user3)
 Booking.create!(date_start: Date.new(2022,2,25), date_end: Date.new(2022,2,28), boat: boat1, user: user4)
