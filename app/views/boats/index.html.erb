@@ -6,10 +6,10 @@
         <%= link_to boat_path(boat) do %>
           <% if boat.photos.count > 0 %>
             <% first = boat.photos.first %>
-            <% photo_url =cl_image_path(first.key) %>
-            <img src="<%= photo_url %>" class="d-block w-100 h-100 img-fluid" alt="A beautiful large boat">
+            <% photo_url = cl_image_path(first.key) %>
+            <img src="<%= photo_url %>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="A beautiful large boat">
           <% else %>
-            <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" alt="boat parked">
+            <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="height: 200px; object-fit: cover;" alt="boat parked">
           <% end %>
         <% end %>
           <div class="card-body">
