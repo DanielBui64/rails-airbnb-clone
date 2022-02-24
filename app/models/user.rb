@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :bookings
   has_many :boats
+  has_one_attached :photo
 
   validates :first_name, :last_name, :phone_number, :email, :password, :date_of_birth, presence: true
 end
