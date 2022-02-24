@@ -8,8 +8,8 @@
       <%= f.input :price_per_day %>
       <%= f.input :capacity %>
       <%= f.input :description %>
-      <%= f.input :photo, as: :file %>
-      <%#= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%#= f.input :photo, as: :file %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.submit 'Add boat' %>
     <% end %>
   </div>
