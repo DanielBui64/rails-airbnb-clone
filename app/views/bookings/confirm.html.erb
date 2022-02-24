@@ -1,2 +1,47 @@
-<h1>Booking#confirm</h1>
-<p>Find me in app/views/booking/confirm.html.erb</p>
+<div class="container mt-3">
+  <div class="text-center">
+    <h1>Booking Confirmed</h1>
+    <p>Thank you for using WaterBnB as your boat rental service!</p>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card text-white bg-success mt-3 mb-3">
+        <h5 class="card-header text-center">Booking for <%= @booking.boat.name %> was successful!</h5>
+        <div class="card-body">
+          <h5 class="card-title">Request has been sent to <%= @booking.boat.user.first_name %></h5>
+          <p class="card-text">Booking details:</p>
+          <ul class="list-group list-group-flush bg-transparent">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              From:
+              <span><%= @booking.date_start %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Till:
+              <span><%= @booking.date_end %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Total:
+              <span><%= (@booking.date_end - @booking.date_start).to_i %> days</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Total Cost:
+              <span>$<%= (@booking.date_end - @booking.date_start).to_i * @booking.boat.price_per_day %></span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div class="row row-cols-1 row-cols-md-2 g-0">
+            <div class="col-md-6 text-center">
+              <%= link_to 'My Bookings', dashboard_my_bookings_path, class:"btn btn-dark btn-lg" %>
+            </div>
+            <div class="col-md-6 text-center">
+              <%= link_to 'Browse Boats', boats_path, class:"btn btn-dark btn-lg" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
