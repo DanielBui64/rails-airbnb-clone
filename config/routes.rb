@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :bookings, only: %i[show destroy] do
     get 'confirm', to: :confirm
+    get 'accept', to: :accept
   end
 
   resources :dashboard, only: %i[index]

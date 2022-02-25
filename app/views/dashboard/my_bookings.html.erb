@@ -5,67 +5,109 @@
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @bookings.each do |booking| %>
       <div class="col">
-        <div class="card">
+        <div class="card <%= "border-success" if booking.confirmed %>">
           <div class="card-header">
-            <%= booking.boat.name %>
+            <% if booking.confirmed %>
+              <%= booking.boat.user.first_name %> approved your request!
+            <% else %>
+              Your request has been sent to <%= booking.boat.user.first_name %>
+            <% end %>
           </div>
           <div class="row g-0">
             <div class="col-md-4">
               <% if booking.boat.photos.count > 0 %>
                 <% first = booking.boat.photos.first %>
                 <% photo_url = cl_image_path(first.key) %>
-                <img src="<%= photo_url %>" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="A beautiful large boat">
+                <img src="<%= photo_url %>" class="card-img-top" style="height: 140px; object-fit: cover;" alt="A beautiful large boat">
               <% else %>
-                <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="boat parked">
+                <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="height: 140px; object-fit: cover;" alt="boat parked">
               <% end %>
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <p class="card-title">Request to rent <%= booking.boat.name %> has been sent to <%= booking.boat.user.first_name %></p>
-                <p class="card-text">Request made from <%= booking.date_start %> till <%= booking.date_end %></p>
+                <h5 class="card-title">
+                  <% if booking.confirmed %>
+                    You will be renting <%= booking.boat.name %>
+                  <% else %>
+                    You want to rent <%= booking.boat.name %>
+                  <% end %>
+                </h5>
+                <p class="card-text d-flex justify-content-between align-items-center">
+                  From: <span><%= booking.date_start %><br></span>
+                </p>
+                <p class="card-text d-flex justify-content-between align-items-center">
+                  Till: <span><%= booking.date_end %></span>
+                </p>
               </div>
             </div>
           </div>
           <div class="card-footer text-center">
-            <%= link_to "Cancel Request", booking_path(booking), method: :delete, data: { confirm: "Cancel request?" }, class:"btn btn-danger"%>
+              <% if booking.confirmed %>
+                <%= link_to "Contact #{booking.boat.user.first_name}", '#', data: { confirm: "You can contact #{booking.boat.user.first_name} at #{booking.boat.user.phone_number}" }, class:"btn btn-secondary"%>
+              <% else %>
+                <%= link_to "Cancel Request", booking_path(booking), method: :delete, data: { confirm: "Cancel request?" }, class:"btn btn-danger"%>
+              <% end %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-  <br>
-  <div class="row row-cols-2 mb-3">
-    <div class="col"><h2>My Booking Requests</h2></div>
-  </div>
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    <% @booking_requests.each do |request| %>
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            New request from <%= request.user.first_name %>!
-          </div>
-          <div class="row g-0">
-            <div class="col-md-4">
-              <% if request.boat.photos.count > 0 %>
-                <% first = request.boat.photos.first %>
-                <% photo_url = cl_image_path(first.key) %>
-                <img src="<%= photo_url %>" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="A beautiful large boat">
+  <% if current_user.owner %>
+    <br>
+    <div class="row row-cols-2 mb-3">
+      <div class="col"><h2>My Booking Requests</h2></div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @booking_requests.each do |request| %>
+        <div class="col">
+          <div class="card <%= "border-success" if request.confirmed %>">
+            <div class="card-header">
+              <% if request.confirmed %>
+                You confirmed this request from <%= request.user.first_name %>
               <% else %>
-                <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="boat parked">
+                New request from <%= request.user.first_name %>!
               <% end %>
             </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text"><%= request.user.first_name %> wants to rent <%= request.boat.name %> from <%= request.date_start %> till <%= request.date_end %></p>
+            <div class="row g-0">
+              <div class="col-md-4">
+                <% if request.boat.photos.count > 0 %>
+                  <% first = request.boat.photos.first %>
+                  <% photo_url = cl_image_path(first.key) %>
+                  <img src="<%= photo_url %>" class="card-img-top" style="height: 140px; object-fit: cover;" alt="A beautiful large boat">
+                <% else %>
+                  <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="max-height: 150px; object-fit: cover;" alt="boat parked">
+                <% end %>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <% if request.confirmed %>
+                    <h5 class="card-title"><%= request.user.first_name %> will be renting <%= request.boat.name %></h5>
+                  <% else %>
+                    <h5 class="card-title"><%= request.user.first_name %> wants to rent <%= request.boat.name %></h5>
+                  <% end %>
+                  <p class="card-text d-flex justify-content-between align-items-center">
+                    From: <span><%= request.date_start %><br></span>
+                  </p>
+                  <p class="card-text d-flex justify-content-between align-items-center">
+                    Till: <span><%= request.date_end %></span>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card-footer text-center">
-            <button type="button" class="btn btn-success">Accept</button>
-            <%= link_to "Decline", booking_path(request), method: :delete, data: { confirm: "Cancel request?" }, class:"btn btn-danger"%>
+            <% if request.confirmed %>
+              <div class="card-footer d-flex justify-content-evenly align-items-center">
+                <%= link_to "Contact #{request.user.first_name}", '#', data: { confirm: "You can contact #{request.user.first_name} at #{request.user.phone_number}" }, class:"btn btn-outline-secondary"%>
+                <%= link_to "Cancel Request", booking_path(request), method: :delete, data: { confirm: "Cancel request?" }, class:"btn btn-outline-danger"%>
+              </div>
+            <% else %>
+              <div class="card-footer d-flex justify-content-evenly align-items-center">
+                <%= link_to "Accept", booking_accept_path(request), class:"btn btn-outline-success"%>
+                <%= link_to "Decline", booking_path(request), method: :delete, data: { confirm: "Decline request?" }, class:"btn btn-outline-danger"%>
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
