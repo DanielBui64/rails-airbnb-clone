@@ -81,13 +81,10 @@
           <%= simple_form_for([@boat, @booking]) do |f| %>
             <%= f.input :date_start %>
             <%= f.input :date_end %>
-            <%= f.submit 'Book Now' %>
+            <%= f.submit 'Book Now', class:'btn btn-success w-100'%>
           <% end %>
-          <br>
-          <div class="d-grid gap-2 col-12 mx-auto">
-            <%# <button type="button" class="btn btn-success">Book Now</button> %>
-            <button class="btn btn-secondary" type="button">Contact <%= @boat.user.first_name %></button>
-          </div>
+
+          <%= link_to "Contact #{@boat.user.first_name}", '#', data: { confirm: "You can contact #{@boat.user.first_name} at #{@boat.user.phone_number}" }, class:"btn btn-secondary w-100 mt-2"%>
         </div>
       </div>
     </div>
