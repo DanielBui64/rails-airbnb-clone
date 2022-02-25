@@ -1,50 +1,17 @@
 <%= render 'banner' %>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-6">
-        <h1 class="text-primary">Welcome</h1>
-        <% if user_signed_in? %>
-          <%= current_user.email %>
-        <% end %>
+    <div class="col-10 mt-5 d-flex justify-content-between">
+      <div class="imageCard" style="height:280px; width:280px; background-image:url(https://images.unsplash.com/photo-1593351415075-3bac9f45c877?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80);">
+          Loan out your own boat<br>in the morning.
+      </div>
 
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner" style=" width:100%; height: 400px !important;">
-          <div class="carousel-item active">
+      <div class="imageCard" style="height:280px; width:280px; background-image:url(https://images.unsplash.com/photo-1602867612779-3aaf54b425c2?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80);">
+          Party all day with friends.
+      </div>
 
-            <img src="https://images.unsplash.com/photo-1593351415075-3bac9f45c877?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80" class="d-block w-100" alt="sunset-boat">
-            <div class="carousel-caption d-none d-md-block">
-              <h5><strong>Daily Updates</strong></h5>
-              <p><strong>The new 2022 family size boats are here and are ready for adventure!</strong></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1602867612779-3aaf54b425c2?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80" class="d-block w-100" alt="party-boat">
-            <div class="carousel-caption d-none d-md-block">
-              <h5><strong>Upcoming Events</strong></h5>
-              <p><strong>Captain Ahab's Watery Tales: Parkhead Boat Gathering</strong></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1628029338883-61644ec68475?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" class="d-block w-100" alt="billionaire-yacht">
-            <div class="carousel-caption d-none d-md-block">
-              <h5><strong>About</strong></h5>
-              <p><strong>Learn about new features</strong></p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      <div class="imageCard" style="height:280px; width:280px; background-image:url(https://images.unsplash.com/photo-1628029338883-61644ec68475?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
+          Rent a bigger boat<br>for the evening.
       </div>
     </div>
   </div>
