@@ -12,9 +12,15 @@
             <img src="https://electrek.co/wp-content/uploads/sites/3/2021/09/duck-boat-header.jpg" class="card-img-top" style="height: 200px; object-fit: cover;" alt="boat parked">
           <% end %>
         <% end %>
-          <div class="card-body">
+          <div class="card-body" >
             <h5 class="card-title"><%= boat.name %></h5>
-            <p class="card-text"><%= boat.description %></p>
+            <% if boat.description.length > 60 %>
+              <p class="card-text"><%= boat.description[0,50] %>...</p>
+            <% else %>
+              <p class="card-text"><%= boat.description%></p>
+            <% end %>
+            <%# <p class="card-text text-truncate text-wrap" style="max-height: 75px; max-width: 100%;"> %>
+            <%#= boat.description %>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Location: <%= boat.location %></li>
