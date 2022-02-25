@@ -17,7 +17,7 @@
               <span><%= @booking.date_start %></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Till:
+              Until:
               <span><%= @booking.date_end %></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -26,7 +26,9 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Total Cost:
-              <span>$<%= (@booking.date_end - @booking.date_start).to_i * @booking.boat.price_per_day %></span>
+              <span><% total = (@booking.date_end - @booking.date_start).to_i * @booking.boat.price_per_day %>
+              $<%= total.to_s(:delimited) %>
+              </span>
             </li>
           </ul>
         </div>
