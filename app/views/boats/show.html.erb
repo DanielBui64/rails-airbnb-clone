@@ -75,8 +75,16 @@
     <div class="col-4">
     <div class="card" style="width: 20rem;">
       <div class="card-body">
-          <h5 class="card-title">$<%= @boat.price_per_day %>/day</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Provided by <%= @boat.user.first_name %></h6>
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5 class="card-title">$<%= @boat.price_per_day %>/day</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Provided by <%= @boat.user.first_name %></h6>
+          </div>
+          <div>
+            <% photo_url = @user.photo.key.nil? ? 'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png' : cl_image_path(@user.photo.key) %>
+            <%= image_tag photo_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          </div>
+        </div>
 
           <%= simple_form_for([@boat, @booking]) do |f| %>
             <%= f.input :date_start %>
